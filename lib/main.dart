@@ -1,4 +1,5 @@
 import 'package:app_meditation/app/screen/intro/intro_screen.dart';
+import 'package:app_meditation/app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +13,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: "Cairo",
+        scaffoldBackgroundColor: kBackgroundColor,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: Theme.of(context)
+            .textTheme
+            .apply(displayColor: kTextColor, fontFamily: "Cairo"),
       ),
       home: Intro(),
     );
