@@ -1,5 +1,6 @@
 import 'package:app_meditation/app/styles/colors.dart';
 import 'package:app_meditation/app/utils/images.dart';
+import 'package:app_meditation/app/widget/category_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,6 +10,31 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        height: 80,
+        color: Colors.amber,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            BottomNavItem(
+              image: Images.calendar,
+              title: "Today",
+              onPress: () {},
+            ),
+            BottomNavItem(
+              image: Images.calendar,
+              title: "Today",
+              onPress: () {},
+            ),
+            BottomNavItem(
+              image: Images.calendar,
+              title: "Today",
+              onPress: () {},
+            ),
+          ],
+        ),
+      ),
       body: Container(
         child: Stack(
           children: [
@@ -72,18 +98,22 @@ class Home extends StatelessWidget {
                         CardCategory(
                           svgPath: Images.hamburger,
                           title: "Diet recommendation",
+                          onPress: () {},
                         ),
                         CardCategory(
                           svgPath: Images.excercise,
                           title: "Kegel Exercises",
+                          onPress: () {},
                         ),
                         CardCategory(
                           svgPath: Images.meditation,
                           title: "Meditation",
+                          onPress: () {},
                         ),
                         CardCategory(
                           svgPath: Images.yoga,
                           title: "Yoga",
+                          onPress: () {},
                         ),
                       ],
                     ),
@@ -98,52 +128,27 @@ class Home extends StatelessWidget {
   }
 }
 
-class CardCategory extends StatelessWidget {
-  final String svgPath;
+class BottomNavItem extends StatelessWidget {
+  final String image;
   final String title;
-  const CardCategory({
+  final Function onPress;
+  const BottomNavItem({
     Key key,
-    this.svgPath,
+    this.image,
     this.title,
+    this.onPress,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(13.0),
-        boxShadow: [
-          BoxShadow(
-              offset: Offset(0, 17),
-              blurRadius: 17,
-              spreadRadius: -23,
-              color: kShadowColor)
+    return GestureDetector(
+      onTap: onPress,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          SvgPicture.asset(image),
+          Text(title),
         ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                Spacer(),
-                SvgPicture.asset(svgPath),
-                Spacer(),
-                Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6
-                      .copyWith(fontSize: 15),
-                )
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }

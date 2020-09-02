@@ -6,4 +6,5 @@ class Images {
   static const String excercise = 'assets/icons/Excrecises.svg';
   static const String meditation = 'assets/icons/Meditation.svg';
   static const String yoga = 'assets/icons/yoga.svg';
+  static const String calendar = 'assets/icons/calendar.svg';
 }
