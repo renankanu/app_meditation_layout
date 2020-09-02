@@ -11,9 +11,9 @@ class Home extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
         height: 80,
-        color: Colors.amber,
+        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -23,13 +23,14 @@ class Home extends StatelessWidget {
               onPress: () {},
             ),
             BottomNavItem(
-              image: Images.calendar,
-              title: "Today",
+              image: Images.gym,
+              title: "Excercise",
               onPress: () {},
+              isSelected: true,
             ),
             BottomNavItem(
-              image: Images.calendar,
-              title: "Today",
+              image: Images.settings,
+              title: "Settings",
               onPress: () {},
             ),
           ],
@@ -132,11 +133,13 @@ class BottomNavItem extends StatelessWidget {
   final String image;
   final String title;
   final Function onPress;
+  final bool isSelected;
   const BottomNavItem({
     Key key,
     this.image,
     this.title,
     this.onPress,
+    this.isSelected = false,
   }) : super(key: key);
 
   @override
@@ -147,7 +150,10 @@ class BottomNavItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SvgPicture.asset(image),
-          Text(title),
+          Text(
+            title,
+            style: TextStyle(color: isSelected ? kActiveIconColor : kTextColor),
+          ),
         ],
       ),
     );

@@ -7,4 +7,6 @@ class Images {
   static const String meditation = 'assets/icons/Meditation.svg';
   static const String yoga = 'assets/icons/yoga.svg';
   static const String calendar = 'assets/icons/calendar.svg';
+  static const String gym = 'assets/icons/gym.svg';
+  static const String settings = 'assets/icons/Settings.svg';
 }
